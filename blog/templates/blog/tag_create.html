@@ -1,0 +1,25 @@
+{% extends 'pages/base.html'  %}
+{% load static   %}
+{% block content   %}
+  <h1>Create Tag</h1>
+  {% if request.user.is_authenticated and request.user.is_staff  %}
+  <form class="mb-5"  style="margin: 80px 60px 50px 50px ;"  action="{%  url 'tag_creat' %}" method="POST">
+      {% csrf_token %}
+      {% for field in form   %}
+      <div class="form-group">
+           {% if field.errors  %} 
+           <div class="alert alert-danger" role="alert">
+             {{ field.errors }}
+          </div>
+           {% endif  %}
+            {{field.label}}
+            {{field}}
+      </div>
+      {% endfor  %}
+
+      <button type="submit" name="button"  class="btn btn-primary">Submit</button>
+
+ </form>
+ <br><br><br>
+{% endif   %}
+{% endblock  %}

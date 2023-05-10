@@ -1,0 +1,45 @@
+{% extends 'pages/base.html'  %}
+{% load static   %}
+{% block title %}
+<title> Studenet | Register</title>
+{% endblock %}
+{% block content   %}
+
+<div id = 'container'>
+    <div class = 'header'>
+      <h2>Create an account</h2>
+    </div>
+    <form action = '#' method = 'POST'>
+      {% csrf_token %}
+      <div id = 'form-control ' >
+          <!-- <input type="text" name="username" class="form-control" placeholder="Enter Username" maxlength="100" autofocus="" required=""> -->
+          {{register_form.username}}
+        </div>
+   <br>
+        <div id = 'form-control ' >  
+          <!-- <input type="text" name="username" class="form-control" placeholder="Enter Username" maxlength="100" autofocus="" required=""> -->
+          {{register_form.email}}
+        </div>
+  
+      <div id = 'form-control'>
+        {{field.label}}
+          <!-- <input type="password" name="password1" class="form-control" placeholder="At least eight characters" maxlength="100" autofocus="" required=""> -->
+          {{register_form.password1}}
+        </div>
+  
+       <div id = 'form-control'>
+             {{field.label}}
+          <!-- <input type="password" name="password2" class="form-control" placeholder="Confirm password" maxlength="100" autofocus="" required=""> -->
+          {{register_form.password2}}
+        </div>
+      
+        {{register_form.errors}}
+      <div id = 'haveAnAccount'>
+        <p>Already have an account?</p>
+        <a href = "{% url 'login' %}"><strong style="color: blue;">Login</strong></a>
+      </div>
+      <button type = 'submit' id = 'submitButton'>Register</button>
+    </form>
+  </div>
+  {% include 'partials/_footer.html'  %}
+{% endblock content   %}

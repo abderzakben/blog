@@ -1,0 +1,104 @@
+{% extends 'pages/base.html'  %}
+{% load static   %}
+
+
+{% block content   %}
+
+  <!-- Start Articles -->
+   
+  <div class="articles" id="articles">
+    <h2 class="main-title">All Models </h2>
+  
+    <div class="container">
+       {% for post in posts  %}
+      <div class="box">  
+        
+        <img src="{% static 'img/cat-01.jpg'  %}" alt="" />
+        <div class="content">
+          <h3>{{post.title}} | {{post.post_date}}</h3>
+          
+          <p>{{post.body|slice:':10'|safe }} ...</p>
+        </div>
+        <div class="info">
+            <a href="{{ post.get_absolute_url }}" class="btn btn-light" > Read </a>
+            {%  for tag in post.tags.all %}
+                <a style="color: crimson;"  href="{{ tag.get_absolute_url }}" ><span class="badge badge-info">{{tag.title}}</span></a>
+            {% endfor %}
+            </div> 
+          </div>
+         {% endfor %} 
+   
+   </div>
+   
+   <!-- Start Work Steps -->
+   <div class="work-steps" id="work-steps">
+    <h2 class="main-title">How It Works ?</h2>
+    <div class="container">
+      <img src="{% static 'img/work-steps.png'  %}" alt="" class="image" />
+      <div class="info">
+        <div class="box">
+          <img src="{% static 'img/work-steps-1.png'  %}" alt="" />
+          <div class="text">
+            <h3>Business Analysis</h3>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt obcaecati quisquam quis laborum
+              recusandae debitis vel
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="{% static 'img/work-steps-2.png'  %}" alt="" />
+          <div class="text">
+            <h3>Architecture</h3>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt obcaecati quisquam quis laborum
+              recusandae debitis vel
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <img src="{% static 'img/work-steps-3.png'  %}" alt="" />
+          <div class="text">
+            <h3>Developement</h3>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim nesciunt obcaecati quisquam quis laborum
+              recusandae debitis vel
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Work Steps -->
+   {% include 'partials/_alerts.html'  %}
+  
+  
+ 
+   
+  
+  
+      <!--
+{% for post in posts  %}
+<div style="margin: 80px 60px 50px 50px ;">
+    <div class= "card mb-4">
+        <div class="card-header">
+            {{post.post_date}}
+        </div>
+        <div>
+            <h5 class=card-title>{{post.title}}</h5>
+            <p class="card-text">{{post.body}}</p>
+            <a href="{{ post.get_absolute_url }}" class="btn btn-light" > Read </a>
+        </div>
+        <div class="card-footer text-muted">
+             Tags:
+             {%  for tag in post.tags.all %}
+                <a style="color: crimson;"  href="{{ tag.get_absolute_url }}" ><span class="badge badge-info">{{tag.title}}</span></a>
+             {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endfor  %}
+-->
+
+{% endblock content   %}

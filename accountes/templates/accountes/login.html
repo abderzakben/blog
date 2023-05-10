@@ -1,0 +1,45 @@
+{% extends 'pages/base.html'  %}
+{% load static   %}
+{% block title %}
+<title> Studenet | Login </title>
+{% endblock %}
+
+{% block content   %}
+
+
+<div id = 'container' style = 'height: 500px'>
+    <div class = 'header' style="height: 90px;">
+      {% if request.user.is_authenticated  %}
+      <h4 style="text-align: center; color: rgb(251, 37, 37);">
+          Welcom , {{request.user}},you are now Logged in
+      </h4>
+      {% else   %}
+       <h1>Login</h1>
+      {% endif %}
+    </div>
+    <form action = '#' method = 'POST'>
+      {% csrf_token %}
+      <div id = 'form-control'>
+        <label>Username:</label>
+        <input type="text" name="username" class="form-control" placeholder="Enter Username" maxlength="100" autofocus="" required="" id="id_username">
+      </div>
+
+      <div id = 'form-control'>
+        <label>Passowrd</label>
+        <input type="password" name="password1" class="form-control" placeholder="At least eight characters" maxlength="100" required="" id="id_password1">
+      </div>
+      <br>
+      
+        
+        
+      <div id = 'haveAnAccount'>
+        <p>Don't have an account?</p>
+        <a href = "{% url 'singup' %}"><strong style="color: blue;">Register</strong></a>
+      </div>
+      
+      <button type = 'submit' id = 'submitButton'>Login</button>
+    </form>
+    
+  </div>
+  {% include 'partials/_footer.html'  %}
+{% endblock content   %}  

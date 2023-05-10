@@ -1,0 +1,17 @@
+{% extends 'pages/base.html'  %}
+{% load static   %}
+
+
+
+{% block content   %}
+{% if request.user.is_authenticated and request.user.is_staff  %}
+<form class="" action="{{ tag.get_delete_url }}" method="POST">
+       {% csrf_token  %}
+       <h3>Are sure you want to delete " {{tag.title}}" Tag ???  </h3>
+       <a href="{{ tag.get_absolute_url }}" class="btn btn-link" > Cancel</a>
+       <button type="submit" name="button" class="btn btn-danger"> Delete  </button>
+            
+</form>
+{% endif   %}
+{% include 'partials/_footer.html'  %}
+{% endblock  %}

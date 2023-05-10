@@ -1,0 +1,26 @@
+{% extends 'pages/base.html'  %}
+{% load static   %}
+{% block content   %}
+
+<div class="services" id="services">
+   <h2 class="main-title"> Model :  {{tag.title}}  </h2>
+        
+    <div class="container">
+      {% for post in tag.posts.all  %}  
+      <div class="box">
+        <div class="info">
+            
+            <i class="fas fa-calendar-alt" style="padding-left: 50px;"> {{post.post_date}}</i>
+               <h2 style="text-align: center;">{{post.title}}</h2>
+               <p style="text-align: center;">{{post.body|slice:"100"|safe}} ... </p>
+               <a href="{{ post.get_absolute_url }}" class="btn btn-light" >Read </a>
+               <a href="{% url 'index'  %}"><i class="fas fa-home"></i></a>
+               <a href="{%  url 'home-blog'  %}"><i class="fas fa-arrow-left"  style="padding-left: 120px;"></i></a>
+               
+          </div>
+        </div>
+        {% endfor   %}
+      </div>
+    </div>
+{% include 'partials/_footer.html'  %}
+{% endblock content   %}

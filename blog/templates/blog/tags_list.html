@@ -1,0 +1,15 @@
+{% extends 'pages/base.html'  %}
+{% load static   %}
+
+{% block content   %}
+
+<h1  class="mb-5">Tags:</h1>
+{% for tag in tags %}
+   <div class="">
+       <a href="{{ tag.get_absolute_url }}" style="color: rgb(251, 12, 12);">
+       <h3> {{ tag.title }}</h3>
+    </a>
+   </div>
+{% endfor  %}
+
+{% endblock content   %}

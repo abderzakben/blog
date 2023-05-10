@@ -1,0 +1,28 @@
+{% extends 'pages/base.html'  %}
+{% load static   %}
+{% block content   %}
+  <h1> Add Commenter </h1>
+  {% if request.user.is_authenticated  %}
+ <form class="mb-5"  style="margin: 80px 60px 50px 50px ;"   method="POST">
+      {% csrf_token %}
+      {{ form.media }}
+      {% for field in form   %}
+      <div class="form-group">
+           {% if field.errors  %} 
+           <div class="alert alert-danger" role="alert">
+             {{ field.errors }}
+             
+          </div>
+           {% endif  %}
+            {{field.label}}
+            {{field}}
+      </div>
+      {% endfor  %}
+
+      <button type="submit" name="button"  class="btn btn-primary">add Commente</button>
+
+ </form>
+ <br><br><br>
+{% endif %}
+{% include 'partials/_footer.html'  %}
+{% endblock  %}
