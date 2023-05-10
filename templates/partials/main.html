@@ -1,0 +1,39 @@
+{%  load static %}
+<style>
+    .main-panel{
+        /* background-color: red; */  
+        border: 1px solid;
+        border-radius: 2px;
+        position: fixed;
+        right: 20px;
+        bottom: 30px;
+        opacity: 0.5;
+        padding: 15px;
+        margin-bottom: 210px;
+        
+    }
+    .main-panel:hover {
+        opacity: 1;
+        background-color: crimson;
+    }
+    .main-panel a{
+        display: block;
+        margin:5px 0 ;
+    }
+
+</style>
+{% block amin-panel %}
+{% if request.user.is_authenticated  %}
+<div class="main-panel  align-items-center ">
+         <h3 style="text-align: center;"><i class="fas fa-user-alt"> {{user.username|slice:':3'}}</i></h3> 
+   <a href="{% url 'notes' %}" class="btn btn-outline-info">Notes </a>
+   <a href="{% url 'homework'  %}" class="btn btn-outline-info"> Home Werk </a>
+   <a href="{% url 'todo'  %}" class="btn btn-outline-info"> Todo  </a>
+   <a href="{% url 'index'  %}" class="btn btn-outline-info"> Home  </a>
+   <a href="{% url 'home-blog'  %}" class="btn btn-outline-info"> Cours  </a>
+   <a href="{% url 'about'  %}" class="btn btn-outline-info"> about  </a>
+
+   
+</div>
+{% endif  %}
+{% endblock  %}

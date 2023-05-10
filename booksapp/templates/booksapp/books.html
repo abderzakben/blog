@@ -1,0 +1,73 @@
+{% extends 'pages/base.html'  %}
+{% load static   %}
+{% block title %}
+<title> Studenet | Books </title>
+{% endblock %}
+     
+
+{% block content   %}
+
+
+<p uk-margin style = "width:80%; margin:auto; margin-top:20px ;margin-bottom:20px">
+  {% for category in categorys  %}
+  <a class="uk-button uk-button-default" href="{% url 'category_detail' category.slug  %}" style="margin-bottom:6px"><strong >{{category.name}}</strong></a>
+ {% endfor  %}
+</p>
+ 
+
+<div class = 'container'>
+    <div class = 'row'><h4>Recommended Books</h4></div>
+    <div class = 'row'>
+      {% for book in recommended_books %}
+      <div class = 'col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2'>
+        <a href = "{% url 'book_detail' book.slug  %}">
+          <div>
+            <div class="uk-card uk-card-default uk-card-body"> 
+                <img src = "{{book.u_image.url}}">
+               
+            </div>
+        </div>
+      </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+  
+  <div class = 'container'>
+    <div class = 'row'><h4>Top Fiction Books</h4></div>
+    <div class = 'row'>
+      {% for book in fiction_books %}
+      <div class = 'col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2'>
+        <a href = "{% url 'book_detail' book.slug  %}">
+          <div>
+            <div class="uk-card uk-card-default uk-card-body"> 
+               <img src = "{{book.u_image.url}}">
+            </div>
+        </div>
+      </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+  
+  <div class = 'container'>
+      <div class = 'row'><h4>Top Business Books</h4></div>
+      <div class = 'row'>
+          {% for book in business_books %}
+        <div class = 'col-6 col-sm-4 col-md-4 col-lg-3 col-xl-2'>
+          <a href = "{% url 'book_detail' book.slug  %}">
+            <div>
+              <div class="uk-card uk-card-default uk-card-body"> 
+                 <img src = "{{book.u_image.url}}">
+              </div>
+          </div>
+        </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% include 'partials/_footer.html'  %}
+    {% endblock content   %}
+ 

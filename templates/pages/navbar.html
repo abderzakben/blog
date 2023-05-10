@@ -1,0 +1,124 @@
+{%  load static %}
+ <!-- Start Header -->
+
+ <div class="header" id="header">
+    <div class="container">
+      <a href="#" class="logo">Elzero</a>
+      <ul class="main-nav">
+        <li><a href="{% url 'index'  %}">Home</a></li>
+        <li 
+              {% if 'login' in request.path or 'singup' in request.path or 'profile' in request.path  %}
+                   class="nav-item dropdown active"
+              {% else  %} 
+                   class="nav-item dropdown" 
+              {% endif  %}        
+              >
+              
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   {% if request.user.is_authenticated  %}
+                     Welcom
+                   {% else %}
+                    Join Us
+                   {% endif  %}
+                </a>
+               
+                <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdown">
+                  {% if request.user.is_authenticated  %}
+                <a class="dropdown-item" href="{% url 'profile'  %}">Profile</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout' %}">logout</a>
+                
+                   {% else %}
+                   <a class="dropdown-item" href="{% url 'login' %}">Sign in</a>
+                   <a class="dropdown-item" href="{% url 'singup' %}">Sign up</a>
+                   {% endif %}
+                
+              </li>
+         <li><a href="{%  url 'home-blog'  %}">  Cours </a></li>
+        <!--<li><a href="#features">Features</a></li> -->
+        <li 
+                {% if 'books' in request.path  %}
+                   class="nav-item dropdown active "
+                {% else  %}
+                   class="nav-item dropdown"
+                {% endif  %}      
+              >
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Books 
+                </a>
+                <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdown">
+               
+                <a class="dropdown-item" href="{% url 'bookss'  %}">category</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'all_bookss' %}">All Books</a>
+                </div>
+              </li>
+        <li>
+          <a href="#">Other Links</a>
+          <!-- Start Megamenu -->
+          <div class="mega-menu">
+            <div class="image">
+              <img src="{% static 'img/megamenu.png'  %}" alt="" />
+            </div>
+            <ul class="links">
+              <li>
+                <a href="{% url 'books'  %}"><i class="fas fa-address-book"></i>sherch Books </a>
+              </li>
+              <li>
+                <a href="{% url 'dictionary'  %}"> <i class="fab fa-internet-explorer"></i> Dictionary </a>
+              </li>
+              <li>
+                <a href="{% url 'wiki'  %}"><i class="fas fa-search"></i>  Les Difinition  </a>
+              </li>
+              <li>
+                <a href="{% url 'youtube'  %}"> <i class="fab fa-youtube"></i> Sherch en Youtube </a>
+              </li>
+              <li>
+                <a href="{% url 'homework'  %}"><i class="far fa-clipboard fa-fw"></i> Home Work</a>
+              </li>
+            </ul>
+            <ul class="links">
+              <li>
+                <a href="#"><i class="far fa-calendar-alt fa-fw"></i> Events</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-server fa-fw"></i> Pricing Plans</a>
+              </li>
+              <li>
+                <a href="#"><i class="far fa-play-circle fa-fw"></i> Top Cours</a>
+              </li>
+              <li>
+                <a href="#"><i class="far fa-chart-bar fa-fw"></i> Stats</a>
+              </li>
+              <li>
+                <a href="#"><i class="fas fa-percent fa-fw"></i> Request A Discount</a>
+              </li>
+            </ul>
+          </div>
+          <!-- End Megamenu -->
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" action="{% url 'home-blog'  %}">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+ 
+  <!-- End Header -->
+   <!-- Start Landing -->
+   <div class="landing">
+    <div class="container">
+      <div class="text">
+        <h1>Welcome, To Elzero World</h1>
+        <p>Here Iam gonna share everything about my life. Books Iam reading, Games Iam Playing, Stories and Events</p>
+      </div>
+      <div class="image">
+        <img src="{% static 'img/landing-image.png'  %}" alt="" />
+      </div>
+    </div>
+    <!-- <a href="#" class="go-down">
+      <i class="fa fa-angle-double-down fa-2x"></i>
+    </a> -->
+  </div>
+  <!-- End Landing -->

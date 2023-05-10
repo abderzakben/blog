@@ -1,0 +1,47 @@
+{%  load static %}
+<style>
+    .admin-panel{
+        /* background-color: red; */
+        border: 1px solid;
+        border-radius: 2px;
+        position: fixed;
+        right: 20px;
+        bottom: 30px;
+        opacity: 0.3;
+        padding: 15px;
+        margin-bottom: 50px;
+    }
+    .admin-panel:hover {
+        opacity: 1;
+        background-color: crimson;
+    }
+    .admin-panel a{
+        display: block;
+        margin:5px 0 ;
+    }
+
+</style>
+{% block admin-panel %}
+{% if request.user.is_authenticated and request.user.is_staff  %}
+
+<div class="admin-panel  align-items-center ">
+    <div class="dropdown">
+    <a href="/admin"  class="btn btn-outline-info">{{ user.username }}</a>
+   <a href="" class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false"> Create </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="{% url 'post_create'  %}">Post</a>
+      <a class="dropdown-item" href="{% url   'tag_creat' %}">Tag</a>
+     
+    </div>
+  </div>
+
+   
+   {%  if admin_object %}
+   <a href=" {{ admin_object.get_update_url  }} " class="btn btn-light"> Edit </a>
+   <a href="{{ admin_object.get_delete_url   }}" class="btn btn-danger"> Delete </a>
+   {% endif  %}
+</div>
+{% endif %}
+
+{% endblock  %}
