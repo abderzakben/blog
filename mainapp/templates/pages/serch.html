@@ -1,0 +1,41 @@
+{% extends 'pages/base.html'  %}
+{% load static   %}
+{% block title %}
+<title> Studenet | Serch </title>
+{% endblock %}
+{% block content   %}
+
+
+<div class="my-form container p-5 my-5 rounded border border-warning">
+    <form>
+        <h2 class="text-center">Advanced Search</h2>
+        <hr>
+
+        <div class="form-group">
+            <label for="inputSearchProductName">Product Name Contains</label>
+            <input type="text" class="form-control" id="inputSearchProductName" placeholder="espresso">
+        </div>
+        
+        <div class="form-group">
+            <label for="inputSearchProductDescription">Product Description Contains</label>
+            <input type="text" class="form-control" id="inputSearchProductDescription" placeholder="coffee">
+        </div>
+
+        <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label for="inputSearchPrice1">Price Between</label>
+                <input type="number" class="form-control" id="inputSearchPrice1" placeholder="" value="5">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputSearchPrice2">And</label>
+                <input type="number" class="form-control" id="inputSearchPrice2" placeholder="" value="25">
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-warning">Search for All</button>
+    </form>
+</div>
+{% include 'partials/_footer.html'  %}
+{% endblock content   %}
